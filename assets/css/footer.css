@@ -68,6 +68,10 @@
     gap: 28px;
 }
 
+.footer-group-1__item.custom {
+    max-width: 336px;
+}
+
 .footer-group-2 {
     background-color: var(--grey-color-v1);
 }
@@ -102,9 +106,53 @@
 .footer__form button {
     background-color: var(--blue-color-v1);
     color: white;
-    padding: 10px 20px;
+    padding: 12px 18.5px;
+    border: 1px solid var(--blue-color-v1);
     border-radius: 0 30px 30px 0;
     color: var(--grey-color-v1);
     font-weight: 400;
     line-height: 16px;
+}
+
+@media (max-width: 768px) {
+    .footer-group-1__row {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 24px;
+        align-items: center;
+    }
+
+    .footer__form input {
+        width: 100%;
+    }
+
+    .footer__markets {
+        justify-content: center;
+    }
+
+    .footer-group-1__item-body {
+        gap: 24px;
+    }
+
+    .footer-group-1__item.custom {
+        max-width: 342px;
+    }
+
+    .footer__form button {
+        border-radius: 0 var(--radius-200) var(--radius-200) 0;
+    }
+
+    .footer-group-1__item {
+        text-align: center;
+        gap: 16px;
+    }
+
+    .footer__newtworks {
+        flex-direction: row;
+        gap: 147px;
+        row-gap: 10px;
+        max-width: 100%;
+        flex-wrap: wrap;
+        align-self: self-start;
+    }
 }
