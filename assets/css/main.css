@@ -48,6 +48,7 @@
     --grey-color-v6:rgba(241, 241, 241, 1);
     --icon-hover:rgba(91, 91, 91, 1);
     --blue-color-v4:rgba(0, 122, 255, 1);
+    --blue-color-v5:rgba(0, 122, 255, 0.25);
 
     --radius-200: 8px;
 }
@@ -535,7 +536,8 @@
 @media (max-width: 768px) {
     .advantages-block__header,
     .services-block__header,
-    .reviews-block__header {
+    .reviews-block__header,
+    .articles-block__header {
         text-align: center;
     }
 
@@ -588,7 +590,7 @@
 .swiper-button-prev {
     width: 52px !important;
     height: 52px !important;
-    display: grid !important;
+    display: flex !important;
     justify-content: center !important;
     align-items: center !important;
 }
@@ -658,6 +660,15 @@
 .preview-swiper.swiper-button-next,
 .preview-swiper.swiper-button-prev  {
     display: unset !important;
+    top: calc(50% - 18px) !important;
+}
+
+.preview-swiper.swiper-button-next {
+    right: 0 !important;
+}
+
+.preview-swiper.swiper-button-prev {
+    left: 0 !important;
 }
 
 @media (max-width: 999px) {
@@ -685,11 +696,11 @@
     }
 
     .swiper-button-next, .swiper-rtl .swiper-button-prev {
-        right: -11px !important;
+        right: 0 !important;
     }
     
     .swiper-button-prev, .swiper-rtl .swiper-button-next {
-        left: -11px !important;
+        left: 0 !important;
     }
 
     .advantages-block__swiper-wrapper {
@@ -725,6 +736,26 @@
     .swiper-pagination-bullet-active:before {
         width: 7px; 
         height: 7px;
+    }
+
+    .article-swiper.swiper-button-next,
+    .article-swiper.swiper-button-prev {
+        top: calc(50% - 17.5px);
+    }
+
+    .services-swiper.swiper-button-next,
+    .services-swiper.swiper-button-prev {
+        top: calc(50% - 15.5px);
+    }
+
+    .reviews-swiper.swiper-button-next,
+    .reviews-swiper.swiper-button-prev {
+        top: calc(50% - 16.5px);
+    }
+
+    .advantages-swiper.swiper-button-next,
+    .advantages-swiper.swiper-button-prev {
+        top: calc(50% - 20.5px);
     }
 }
 
@@ -970,7 +1001,7 @@ footer input::placeholder,
 }
 
 .preview-block {
-    padding: 278px 0 clamp(54px, 2.121rem + 5.14vw, 108px) 0;
+    padding: clamp(138px, -1.375rem + 20.83vw, 278px) 0 clamp(54px, 2.121rem + 5.14vw, 108px) 0;
 }
 
 .preview-block__row {
@@ -1020,11 +1051,18 @@ footer input::placeholder,
 }
 
 .preview-slide__wrapper img {
+    max-width: 684px;
+    max-height: 456px;
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
 @media (max-width: 900px) {
+
+    .container.custom {
+        padding: 0 clamp(24px, -0.264rem + 7.24vw, 100px);
+    } 
 
     .preview-block__body .btn {
         margin: 0 auto;
@@ -1035,10 +1073,6 @@ footer input::placeholder,
     .preview-block__body {
         padding: 0;
         width: 100%;
-    }
-
-    .preview-block {
-        padding: 138px 0 clamp(54px, 2.121rem + 5.14vw, 108px) 0;
     }
 
    .preview-block__row {
@@ -1055,6 +1089,16 @@ footer input::placeholder,
     .preview-block__body .btn {
         width: 100%;
     }
+
+    .preview-block__swiper {
+        padding: 0 50px 26px 50px !important;
+        max-width: 820px;
+        height: auto;
+    }
+
+    .preview-block__body span {
+        font-weight: 600;
+    }
 }
 
 @media (hover: hover) {
@@ -1065,7 +1109,8 @@ footer input::placeholder,
     }
 
     .header__find-btn:hover {
-        color: var();
+        border-color: var(--blue-color-v4);
+        background-color: var(--white-color);
     }
 
     .service:hover,
@@ -1073,11 +1118,21 @@ footer input::placeholder,
         background-color: var(--grey-color-v6);
     }
 
-    .footer__newtworks-group a:hover .footer__newtworks-group a svg  {
-        display: none;
+    .header__newtworks-group a:hover svg path, 
+    .footer__newtworks-group a:hover svg path{
+        fill: var(--icon-hover);
     }
 }
 
+.header__find-btn:active {
+    border-color: var(--blue-color-v4);
+    background-color: var(--blue-color-v5);
+}
+
+.header__newtworks-group a:active svg path, 
+.footer__newtworks-group a:active svg path{
+    fill: var(--blue-color-v1);
+}
 
 .btn:active,
 .footer__form button:active {
@@ -1085,4 +1140,25 @@ footer input::placeholder,
     background-color: var(--blue-color-v3);
 }
 
+.preview-block__swiper .swiper-wrapper {
+    display: flex !important;
+}
 
+.preview-block__swiper .swiper-slide {
+    display: flex !important;
+    align-items: center !important; 
+    justify-content: center !important;
+}
+
+.preview-slide__wrapper {
+    max-width: 684px;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 900px) {
+    .preview-block__swiper-wrapper {
+        min-width: 0;
+        align-self: stretch;
+    }
+}
